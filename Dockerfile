@@ -24,7 +24,7 @@ RUN apk add --update --no-cache \
       openssl \
       pkgconfig \
       postgresql-dev \
-      python \
+      python3 \
       tzdata \
       yarn
 
@@ -38,7 +38,7 @@ RUN bundle config build.nokogiri --use-system-libraries
 
 RUN bundle check || bundle install
 
-COPY package.json yarn.lock ./
+COPY yarn.lock ./
 
 RUN yarn install --check-files
 
