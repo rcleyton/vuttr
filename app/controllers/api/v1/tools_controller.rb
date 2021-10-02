@@ -16,11 +16,18 @@ module Api
         end
       end
 
+      # Delete a tool
+      def destroy
+        @tool = Tool.find(params[:id])
+        @tool.destroy
+        render json: @tool, status: :ok
+      end
+
       private
 
       # Allowed parameters to create a new tool
       def tool_params
-        params.require(:tool).permit(:title, :link, :description, :tags)
+        params.require(:tool).permit(:title, :link, :description, tags: [])
       end
 
 
